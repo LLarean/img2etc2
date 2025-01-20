@@ -16,4 +16,6 @@ There are 4 ways to install this utility:
 ## HOW TO
 
 You can access the utility through the context menu:
-`Window > IMG2ETC2`
+`Window > IMG2ETC2`  
+
+![Window](https://github.com/LLarean/img2etc2/blob/main/Preview.png?raw=true)
