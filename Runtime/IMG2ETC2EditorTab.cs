@@ -7,7 +7,7 @@ namespace LLarean.IMG2ETC2
 {
     public class Img2ETC2EditorTab : EditorWindow
     {
-        private const string UtilityName = "IMG2ETC2";
+        private const string UtilityName = "img2etc2";
 
         private readonly List<ImageModel> _imageModels = new();
 
@@ -76,7 +76,7 @@ namespace LLarean.IMG2ETC2
             string[] filePaths = Directory.GetFiles(path);
 
             for (int i = 0; i < filePaths.Length; i++)
-            {
+            { 
                 filePaths[i] = filePaths[i].Replace("\\", "/");
             }
 
@@ -100,14 +100,14 @@ namespace LLarean.IMG2ETC2
 
                 if (image.CurrentSize == image.OldSize)
                 {
-                    imageSize = $"(Size: {image.CurrentSize})";
+                    imageSize = $"Resolution: {image.CurrentSize}";
                 }
                 else
                 {
-                    imageSize = $"(Size: {image.OldSize} => {image.CurrentSize})";
+                    imageSize = $"Resolution: {image.OldSize} => {image.CurrentSize}";
                 }
 
-                GUILayout.Label($"<color={color}>{image.ImageStatus}</color> {image.FilePath} {imageSize}",
+                GUILayout.Label($"<color={color}>{image.ImageStatus}</color> {image.FilePath} <color=white>{imageSize}</color>",
                     new GUIStyle { richText = true });
             }
         }
@@ -187,7 +187,7 @@ namespace LLarean.IMG2ETC2
 
             ImageModel imageModel = new ImageModel
             {
-                FilePath = string.Empty,
+                FilePath = filePath,
                 ImageStatus = imageStatus,
                 CurrentSize = currentSize,
                 OldSize = currentSize,
