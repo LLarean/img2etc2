@@ -1,6 +1,6 @@
-# IMG2ETC2
+# img2etc2
 
-A simple utility for adjusting the image size for correct compression in Unity3D
+A simple utility for adjusting image size to correct compression in Unity 3D.
 
 ## INSTALLATION
 
@@ -13,9 +13,28 @@ There are 4 ways to install this utility:
 - *(via Package Manager)* add the following line to *Packages/manifest.json*:
     - `"com.llarean.screenshoter": "https://github.com/llarean/img2etc2.git",`
 
+## Warning
+
+- The utility changes the size of images. Before applying it, make sure you make a backup copy or create a commit.
+- Image resolution data may not be updated immediately in the image information in editor.
+
 ## HOW TO
 
-You can access the utility through the context menu:
-`Window > IMG2ETC2`  
+1. Open the utility (context menu: `Window > img2etc2`)  
+
+
+2. Select a folder (2 ways):
+  - Click on the "Select folder" button; or
+  - Specify "Folder path:" in the input field;
+
+
+3. Check the list of files
+
+
+4. Click on the "Resize images" button
 
 ![Window](https://github.com/LLarean/img2etc2/blob/main/Preview.png?raw=true)
+
+## Special thanks
+
+[Nintoryan](https://github.com/Nintoryan) (For your inspiration and main idea )
