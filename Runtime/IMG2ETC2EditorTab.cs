@@ -12,6 +12,7 @@ namespace LLarean.IMG2ETC2
         private readonly List<ImageModel> _imageModels = new();
 
         private string _folderPath = string.Empty;
+        private bool _includeSubfolders = false;
 
         #region Displayed GUI
 
@@ -34,7 +35,16 @@ namespace LLarean.IMG2ETC2
             {
                 LoadImagesFromFolder(_folderPath);
             }
+            
+            EditorGUI.BeginChangeCheck();
+            
+            _includeSubfolders = EditorGUILayout.Toggle("Include Subfolders", _includeSubfolders);
 
+            if (EditorGUI.EndChangeCheck())
+            {
+                LoadImagesFromFolder(_folderPath);
+            }
+            
             if (GUILayout.Button("Select folder") == true)
             {
                 SelectFolder();
@@ -73,7 +83,9 @@ namespace LLarean.IMG2ETC2
         private void LoadImagesFromFolder(string path)
         {
             _imageModels.Clear();
-            string[] filePaths = Directory.GetFiles(path);
+            
+            SearchOption searchOption = _includeSubfolders ? SearchOption.AllDirectories : SearchOption.TopDirectoryOnly;
+            string[] filePaths = Directory.GetFiles(path, "*.*", searchOption);
 
             for (int i = 0; i < filePaths.Length; i++)
             { 
