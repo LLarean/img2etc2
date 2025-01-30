@@ -146,7 +146,7 @@ namespace LLarean.IMG2ETC2
                     int newWidth = RoundToNearestFour(original.width);
                     int newHeight = RoundToNearestFour(original.height);
 
-                    Texture2D resized = new Texture2D(newWidth, newHeight);
+                    Texture2D resized = new Texture2D(newWidth, newHeight, TextureFormat.ARGB32, false);
                     ResizeTexture(original, resized);
 
                     byte[] resizedData = resized.EncodeToPNG();
@@ -169,24 +169,15 @@ namespace LLarean.IMG2ETC2
 
         private void ResizeTexture(Texture2D source, Texture2D target)
         {
-            Color[] newPixels = new Color[target.width * target.height];
-
-            float scaleX = (float)source.width / target.width;
-            float scaleY = (float)source.height / target.height;
-
-            for (int y = 0; y < target.height; y++)
-            {
-                for (int x = 0; x < target.width; x++)
-                {
-                    int srcX = Mathf.FloorToInt(x * scaleX);
-                    int srcY = Mathf.FloorToInt(y * scaleY);
-                    newPixels[y * target.width + x] = source.GetPixel(Mathf.Min(srcX, source.width - 1),
-                        Mathf.Min(srcY, source.height - 1));
-                }
-            }
-
-            target.SetPixels(newPixels);
+            RenderTexture renderTexture = RenderTexture.GetTemporary(target.width, target.height, 0, RenderTextureFormat.ARGB32);
+            RenderTexture.active = renderTexture;
+            
+            Graphics.Blit(source, renderTexture);
+            target.ReadPixels(new Rect(0, 0, target.width, target.height), 0, 0);
             target.Apply();
+
+            RenderTexture.ReleaseTemporary(renderTexture);
+            RenderTexture.active = null;
         }
 
         #endregion
