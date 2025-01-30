@@ -130,8 +130,9 @@ namespace LLarean.IMG2ETC2
 
         private void ResizeImages()
         {
-            foreach (var imageModel in _imageModels)
+            for (int i = 0; i < _imageModels.Count; i++)
             {
+                var imageModel = _imageModels[i];
                 if (imageModel.ImageStatus == ImageStatus.Wrong)
                 {
                     Texture2D original = new Texture2D(2, 2);
@@ -154,8 +155,11 @@ namespace LLarean.IMG2ETC2
                     DestroyImmediate(original);
                     DestroyImmediate(resized);
                 }
+
+                EditorUtility.DisplayProgressBar("Resizing Images", $"Processing {i + 1} of {_imageModels.Count}", (float)(i + 1) / _imageModels.Count);
             }
 
+            EditorUtility.ClearProgressBar();
             EditorUtility.DisplayDialog("Action Complete", "Actions have been performed on the images", "OK");
         }
 
