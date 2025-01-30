@@ -12,7 +12,7 @@ namespace LLarean.IMG2ETC2
         private readonly List<ImageModel> _imageModels = new();
 
         private string _folderPath = string.Empty;
-        private bool _includeSubfolders = false;
+        private bool _includeSubfolders = true;
         private Vector2 _scrollPosition;
 
         #region Displayed GUI
@@ -108,22 +108,22 @@ namespace LLarean.IMG2ETC2
 
         private void DisplayImageModels()
         {
-            foreach (var image in _imageModels)
+            for (int i = 0; i < _imageModels.Count; i++)
             {
-                var color = GetStatusColor(image.ImageStatus);
+                var number = i + 1;
+                var color = GetStatusColor(_imageModels[i].ImageStatus);
                 var imageSize = string.Empty;
 
-
-                if (image.CurrentSize == image.OldSize)
+                if (_imageModels[i].CurrentSize == _imageModels[i].OldSize)
                 {
-                    imageSize = $"Resolution: {image.CurrentSize}";
+                    imageSize = $"Resolution: {_imageModels[i].CurrentSize}";
                 }
                 else
                 {
-                    imageSize = $"Resolution: {image.OldSize} => {image.CurrentSize}";
+                    imageSize = $"Resolution: {_imageModels[i].OldSize} => {_imageModels[i].CurrentSize}";
                 }
 
-                GUILayout.Label($"<color={color}>{image.ImageStatus}</color> {image.FilePath} <color=white>{imageSize}</color>",
+                GUILayout.Label($"<color={color}>{_imageModels[i].ImageStatus}</color> {number} - {_imageModels[i].FilePath} <color=white>{imageSize}</color>",
                     new GUIStyle { richText = true });
             }
         }
