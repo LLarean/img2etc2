@@ -13,6 +13,7 @@ namespace LLarean.IMG2ETC2
 
         private string _folderPath = string.Empty;
         private bool _includeSubfolders = false;
+        private Vector2 _scrollPosition;
 
         #region Displayed GUI
 
@@ -61,7 +62,10 @@ namespace LLarean.IMG2ETC2
 
                 GUILayout.Space(10);
                 GUILayout.Label("Images in selected folder:", EditorStyles.boldLabel);
+                
+                _scrollPosition = GUILayout.BeginScrollView(_scrollPosition, GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true));
                 DisplayImageModels();
+                GUILayout.EndScrollView();
             }
         }
 
