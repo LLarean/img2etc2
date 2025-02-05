@@ -1,17 +1,20 @@
 {
   "name": "com.llarean.img2etc2",
-  "displayName": "img2etc2",
-  "version": "1.0.0",
+  "displayName": "IMG2ETC2",
+  "version": "1.5.0",
   "documentationUrl": "https://github.com/LLarean/img2etc2",
   "changelogUrl": "https://github.com/llarean/img2etc2/releases",
   "licensesUrl": "https://github.com/llarean/img2etc2/blob/master/LICENSE.md",
-  "description": "A simple utility for adjusting the image size for correct compression in Unity3D",
+  "description": "A utility that allows you to bring the image resolution to a multiple of 4 for compression to work correctly.",
   "keywords": [
     "img2etc2",
     "png",
     "jpg",
+    "jpeg",
     "compression",
-    "crunch"
+    "crunch",
+    "etc",
+    "unity"
   ],
   "author": {
     "name": "LLarean",

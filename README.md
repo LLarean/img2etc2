@@ -1,17 +1,29 @@
-# img2etc2
+# UnityIMG2ETC2 ![unity](https://img.shields.io/badge/Unity-100000?style=for-the-badge&logo=unity&logoColor=white)
 
-A simple utility for adjusting image size to correct compression in Unity 3D.
+[![Releases](https://img.shields.io/github/v/release/llarean/img2etc2)](https://github.com/llarean/img2etc2/releases)
+![stability-stable](https://img.shields.io/badge/stability-stable-green.svg)
+[![License: APACHE](https://img.shields.io/badge/License-APACHE-yellow.svg)](https://opensource.org/license/apache-2-0)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
+
+
+A utility that allows you to bring the image resolution to a multiple of 4 for compression to work correctly.
+
+ETC is a block-based texture compression format. 
+The image is split up into 4x4 blocks, and each block is encoded using a fixed number of bits.
+Only textures with width/height being multiple of 4 can be compressed to Crunch format.
+
+You can get acquainted with the parameters on the Unity3D [documentation](https://docs.unity3d.com/2023.2/Documentation/Manual/class-TextureImporterOverride.html), or read this [post](https://unity.com/ru/blog/engine-platform/crunch-compression-of-etc-textures).
 
 ## INSTALLATION
 
 There are 4 ways to install this utility:
 
-- import [img2etc2.unitypackage](https://github.com/llarean/img2etc2/releases) via *Assets-Import Package*
+- import [UnityIMG2ETC2.unitypackage](https://github.com/llarean/img2etc2/releases) via *Assets-Import Package*
 - clone/[download](https://github.com/llarean/img2etc2/archive/master.zip) this repository and move files to your Unity project's *Assets* folder
 - *(via Package Manager)* Select Add package from git URL from the add menu. A text box and an Add button appear. Enter a valid Git URL in the text box:
-    - `https://github.com/llarean/img2etc2.git`
+  - `https://github.com/llarean/img2etc2.git`
 - *(via Package Manager)* add the following line to *Packages/manifest.json*:
-    - `"com.llarean.screenshoter": "https://github.com/llarean/img2etc2.git",`
+  - `"com.llarean.img2etc2": "https://github.com/llarean/img2etc2.git",`
 
 ## Warning
 
@@ -20,12 +32,12 @@ There are 4 ways to install this utility:
 
 ## HOW TO
 
-1. Open the utility (context menu: `Window > img2etc2`)  
+1. Open the utility (context menu: `Tools > UnityIMG2ETC2`)
 
 
 2. Select a folder (2 ways):
-  - Click on the "Select folder" button; or
-  - Specify "Folder path:" in the input field;
+- Click on the "Select folder" button; or
+- Specify "Folder path:" in the input field;
 
 
 3. Check the list of files
