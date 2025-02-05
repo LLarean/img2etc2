@@ -30,8 +30,15 @@ namespace LLarean.IMG2ETC2
         private void DrawFolderSettings()
         {
             _folderPath = EditorGUILayout.TextField(GlobalStrings.FolderPath, _folderPath);
+            
+            EditorGUI.BeginChangeCheck();
             _includeSubfolders = EditorGUILayout.Toggle(GlobalStrings.IncludeSubfolders, _includeSubfolders);
-
+            
+            if (EditorGUI.EndChangeCheck())
+            {
+                LoadImages();
+            }
+            
             if (GUILayout.Button(GlobalStrings.SelectFolder) == true)
             {
                 SelectFolder();
