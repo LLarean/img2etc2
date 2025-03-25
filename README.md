@@ -20,6 +20,7 @@ There are 4 ways to install this utility:
 
 - import [UnityIMG2ETC2.unitypackage](https://github.com/llarean/img2etc2/releases) via *Assets-Import Package*
 - clone/[download](https://github.com/llarean/img2etc2/archive/master.zip) this repository and move files to your Unity project's *Assets* folder
+- import it from Asset Store (Currently unavailable)
 - *(via Package Manager)* Select Add package from git URL from the add menu. A text box and an Add button appear. Enter a valid Git URL in the text box:
   - `https://github.com/llarean/img2etc2.git`
 - *(via Package Manager)* add the following line to *Packages/manifest.json*:
