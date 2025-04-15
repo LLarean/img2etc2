@@ -24,7 +24,7 @@ There are 4 ways to install this utility:
 - *(via Package Manager)* Select Add package from git URL from the add menu. A text box and an Add button appear. Enter a valid Git URL in the text box:
   - `https://github.com/llarean/img2etc2.git`
 - *(via Package Manager)* add the following line to *Packages/manifest.json*:
-  - `"com.llarean.img2etc2": "https://github.com/llarean/img2etc2.git",`
+  - `"com.llarean.img2etc2": "https://github.com/llarean/img2etc2.git"`
 
 ## Warning
 
