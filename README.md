@@ -50,4 +50,10 @@ There are 4 ways to install this utility:
 
 ## Special thanks
 
-[Nintoryan](https://github.com/Nintoryan) (For your inspiration and main idea )
+[Nintoryan](https://github.com/Nintoryan) (For your inspiration and main idea)
+
+---
+
+<div align="center">
+
+**Made with ❤️ for the Unity community**
