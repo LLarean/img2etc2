@@ -56,4 +56,6 @@ There are 4 ways to install this utility:
 
 <div align="center">
 
-**Made with ❤️ for the Unity community**
+**Made with ❤️ for the Unity community**  
+
+⭐ If this project helped you, please consider giving it a star!
