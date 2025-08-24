@@ -4,7 +4,7 @@
 [![License: APACHE](https://img.shields.io/badge/License-APACHE-yellow.svg)](https://opensource.org/license/apache-2-0)
 ![stability-stable](https://img.shields.io/badge/stability-stable-green.svg)
 [![CodeFactor](https://www.codefactor.io/repository/github/llarean/img2etc2/badge)](https://www.codefactor.io/repository/github/llarean/img2etc2)
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/llarean/img2etc2/graphs/commit-activity)
 
 A utility that allows you to bring the image resolution to a multiple of 4 for compression to work correctly.
 
