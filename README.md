@@ -6,7 +6,7 @@
 [![CodeFactor](https://www.codefactor.io/repository/github/llarean/img2etc2/badge)](https://www.codefactor.io/repository/github/llarean/img2etc2)
 [![Support](https://img.shields.io/badge/support-maintenance_mode-orange)](https://github.com/llarean/img2etc2/graphs/commit-activity)
 [![Downloads](https://img.shields.io/github/downloads/llarean/img2etc2/total)](https://github.com/LLarean/img2etc2/archive/refs/heads/main.zip)
-[![Asset Store](https://img.shields.io/badge/Asset_Store-100+_downloads-blue)](https://assetstore.unity.com/preview/315139/1042556)
+[![Asset Store](https://img.shields.io/badge/Asset_Store-200+_downloads-blue)](https://assetstore.unity.com/preview/315139/1042556)
 
 Automatically resize Unity images for optimal ETC2/Crunch compression. Ensures all textures have dimensions divisible by 4, enabling efficient mobile texture compression with transparent padding.
 
