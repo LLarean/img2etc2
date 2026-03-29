@@ -6,5 +6,6 @@ namespace LLarean.IMG2ETC2
         public ResolutionStatus ResolutionStatus;
         public string CurrentResolution;
         public string PreviousResolution;
+        public string TargetResolution;
     }
 }
