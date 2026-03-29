@@ -14,6 +14,7 @@ namespace LLarean.IMG2ETC2
         private string _folderPath = string.Empty;
         private bool _includeSubfolders = true;
         private RoundingMode _roundingMode = RoundingMode.Up;
+        private bool _showAllImages = false;
         private Vector2 _scrollPosition;
 
         [MenuItem(GlobalStrings.Tools + GlobalStrings.UtilityName)]
@@ -56,13 +57,47 @@ namespace LLarean.IMG2ETC2
             if (_imageModels.Count == 0) return;
 
             GUILayout.Space(10);
-            GUILayout.Label(GlobalStrings.ImagesIn, EditorStyles.boldLabel);
+            DrawListHeader();
+
             _scrollPosition = GUILayout.BeginScrollView(_scrollPosition);
 
+            int displayNumber = 1;
             for (int i = 0; i < _imageModels.Count; i++)
-                GUIUtils.DrawImageModel(_imageModels[i], i + 1);
+            {
+                var model = _imageModels[i];
+                if (_showAllImages || model.ResolutionStatus == ResolutionStatus.Wrong)
+                    GUIUtils.DrawImageModel(model, displayNumber++);
+            }
+
+            if (displayNumber == 1)
+                GUILayout.Label("All images are correct.", EditorStyles.centeredGreyMiniLabel);
 
             GUILayout.EndScrollView();
+        }
+
+        private void DrawListHeader()
+        {
+            var wrongCount = CountWrong();
+
+            EditorGUILayout.BeginHorizontal();
+            GUILayout.Label(GlobalStrings.ImagesIn, EditorStyles.boldLabel);
+            GUILayout.FlexibleSpace();
+            _showAllImages = EditorGUILayout.ToggleLeft(GlobalStrings.ShowAll, _showAllImages, GUILayout.Width(80));
+            EditorGUILayout.EndHorizontal();
+
+            GUILayout.Label(
+                $"{wrongCount} Wrong  ·  {_imageModels.Count - wrongCount} Correct  ·  {_imageModels.Count} Total",
+                EditorStyles.miniLabel
+            );
+        }
+
+        private int CountWrong()
+        {
+            int count = 0;
+            foreach (var model in _imageModels)
+                if (model.ResolutionStatus == ResolutionStatus.Wrong)
+                    count++;
+            return count;
         }
 
         private void SelectFolder()
