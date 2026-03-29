@@ -4,46 +4,25 @@ using System.IO;
 
 namespace LLarean.IMG2ETC2
 {
-    /// <summary>
-    /// To download images from the file system
-    /// </summary>
     public class ImageLoader
     {
-        /// <summary>
-        /// Allows you to prepare images for work
-        /// </summary>
-        /// <param name="folderPath">The address of the folder from which the images will be uploaded</param>
-        /// <param name="includeSubfolders">Will subfolders be taken into account when searching for files</param>
-        /// <returns>A list with image data</returns>
-        public List<ImageModel> LoadImages(string folderPath, bool includeSubfolders)
+        public List<ImageModel> LoadImages(string folderPath, bool includeSubfolders, RoundingMode roundingMode)
         {
-            List<ImageModel> imageModels = new List<ImageModel>();
-            SearchOption searchOption = includeSubfolders ? SearchOption.AllDirectories : SearchOption.TopDirectoryOnly;
-            string[] filePaths = Directory.GetFiles(folderPath, "*.*", searchOption);
+            var imageModels = new List<ImageModel>();
+            var searchOption = includeSubfolders ? SearchOption.AllDirectories : SearchOption.TopDirectoryOnly;
 
-            foreach (string filePath in filePaths)
+            foreach (var filePath in Directory.GetFiles(folderPath, "*.*", searchOption))
             {
-                string normalizedPath = filePath.Replace("\\", "/");
-                
-                if (GetFileExtensionSupportStatus(normalizedPath) == true)
-                {
-                    ImageModel imageModel = ImageUtils.GetModel(normalizedPath);
-                    imageModels.Add(imageModel);
-                }
+                var normalizedPath = filePath.Replace("\\", "/");
+                if (IsSupportedExtension(normalizedPath))
+                    imageModels.Add(ImageUtils.GetModel(normalizedPath, roundingMode));
             }
 
             return imageModels;
         }
 
-        /// <summary>
-        /// Supported image types
-        /// </summary>
-        /// <param name="path"></param>
-        /// <returns></returns>
-        private bool GetFileExtensionSupportStatus(string path)
-        {
-            return path.EndsWith(".png") || path.EndsWith(".jpg") || path.EndsWith(".jpeg");
-        }
+        private bool IsSupportedExtension(string path) =>
+            path.EndsWith(".png") || path.EndsWith(".jpg") || path.EndsWith(".jpeg");
     }
 }
 #endif
