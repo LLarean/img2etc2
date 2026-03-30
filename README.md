@@ -18,7 +18,8 @@ Perfect for mobile game developers who need maximum compression efficiency witho
 1. Install via Package Manager: `https://github.com/llarean/img2etc2.git`
 2. Open `Tools > UnityIMG2ETC2`
 3. Select your textures folder
-4. Click "Resize images"
+4. Choose rounding mode (Up or Down)
+5. Click "Resize images"
 
 **Result**: All images resized to ETC2-compatible dimensions (multiples of 4)
 
@@ -44,10 +45,13 @@ There are 4 ways to install this utility:
 
 1. Open the utility (context menu: `Tools > UnityIMG2ETC2`)
 2. Select a folder (2 ways):
-- Click on the "Select folder" button; or
-- Specify "Folder path:" in the input field;
-3. Check the list of files
-4. Click on the "Resize images" button
+   - Click on the "Select folder" button; or
+   - Specify "Folder path:" in the input field
+3. Toggle "Include subfolders" if needed
+4. Choose **Rounding Mode**: `Up` rounds dimensions up to the next multiple of 4, `Down` rounds down
+5. Review the image list — by default only **Wrong** (incompatible) images are shown; enable "Show All" to see all textures
+6. Check resolution preview: each entry shows current and target resolution (`1920×1081 → 1920×1084`)
+7. Click "Resize images"
 
 ![Window](https://github.com/LLarean/img2etc2/blob/main/Preview.png?raw=true)
 

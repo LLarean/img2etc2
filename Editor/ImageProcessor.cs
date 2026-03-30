@@ -7,61 +7,57 @@ namespace LLarean.IMG2ETC2
 {
     public class ImageProcessor
     {
-        public void ResizeImages(List<ImageModel> imageModels)
+        public void ResizeImages(List<ImageModel> imageModels, RoundingMode roundingMode)
         {
             for (int i = 0; i < imageModels.Count; i++)
             {
-                var imageModel = imageModels[i];
-                if (imageModel.ResolutionStatus == ResolutionStatus.Wrong)
-                {
-                    var (original, resized) = ProcessImage(imageModel.FilePath);
-                    SaveResizedImage(imageModel, resized);
-                    UpdateModelStatus(imageModel);
-                    DestroyTextures(original, resized);
-                }
+                var model = imageModels[i];
+                if (model.ResolutionStatus == ResolutionStatus.Wrong)
+                    ResizeImage(model, roundingMode);
 
-                var filePath = imageModels[i].FilePath;
-                GUIUtils.UpdateResizeProgress(i, imageModels.Count, filePath);
+                GUIUtils.UpdateResizeProgress(i, imageModels.Count, model.FilePath);
             }
 
             GUIUtils.ClearProgress();
         }
 
-        private (Texture2D, Texture2D) ProcessImage(string path)
+        private void ResizeImage(ImageModel model, RoundingMode roundingMode)
         {
-            var original = LoadTexture(path);
-            var newWidth = ImageUtils.RoundToNearestFour(original.width);
-            var newHeight = ImageUtils.RoundToNearestFour(original.height);
+            var original = ImageUtils.LoadTexture(model.FilePath);
+            var newWidth = ImageUtils.RoundToMultipleOfFour(original.width, roundingMode);
+            var newHeight = ImageUtils.RoundToMultipleOfFour(original.height, roundingMode);
             var resized = new Texture2D(newWidth, newHeight, TextureFormat.ARGB32, false);
+
             ImageUtils.ResizeTexture(original, resized);
-            return (original, resized);
+            SaveAsPng(model, resized);
+            UpdateModel(model, newWidth, newHeight);
+            DestroyTextures(original, resized);
         }
 
-        private Texture2D LoadTexture(string path)
+        private void SaveAsPng(ImageModel model, Texture2D resized)
         {
-            var texture = new Texture2D(2, 2);
-            texture.LoadImage(File.ReadAllBytes(path));
-            return texture;
+            var pngPath = Path.ChangeExtension(model.FilePath, ".png");
+            File.WriteAllBytes(pngPath, resized.EncodeToPNG());
+
+            if (!string.Equals(model.FilePath, pngPath, System.StringComparison.OrdinalIgnoreCase))
+            {
+                File.Delete(model.FilePath);
+                model.FilePath = pngPath;
+            }
         }
 
-        private void SaveResizedImage(ImageModel model, Texture2D resized)
+        private void UpdateModel(ImageModel model, int newWidth, int newHeight)
         {
-            File.WriteAllBytes(model.FilePath, resized.EncodeToPNG());
-        }
-
-        private void UpdateModelStatus(ImageModel model)
-        {
-            var updatedModel = ImageUtils.GetModel(model.FilePath);
-            model.ResolutionStatus = updatedModel.ResolutionStatus;
-            model.CurrentResolution = updatedModel.CurrentResolution;
+            model.PreviousResolution = model.CurrentResolution;
+            model.CurrentResolution = $"({newWidth},{newHeight})";
+            model.TargetResolution = model.CurrentResolution;
+            model.ResolutionStatus = ResolutionStatus.Correct;
         }
 
         private void DestroyTextures(params Texture2D[] textures)
         {
             foreach (var texture in textures)
-            {
                 if (texture != null) Object.DestroyImmediate(texture);
-            }
         }
     }
 }

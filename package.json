@@ -1,11 +1,11 @@
 {
   "name": "com.llarean.img2etc2",
   "displayName": "IMG2ETC2",
-  "version": "1.5.1",
+  "version": "1.6.0",
   "documentationUrl": "https://github.com/LLarean/img2etc2",
   "changelogUrl": "https://github.com/llarean/img2etc2/releases",
   "licensesUrl": "https://github.com/llarean/img2etc2/blob/master/LICENSE.md",
-  "description": "A utility that allows you to bring the image resolution to a multiple of 4 for compression to work correctly.",
+  "description": "Automatically resize Unity textures to ETC2/Crunch-compatible dimensions (multiples of 4). Features rounding mode selection (Up/Down), image list filtering to show only problematic textures, resolution preview with before/after diff, and subfolder support.",
   "keywords": [
     "img2etc2",
     "png",
