@@ -63,6 +63,14 @@ The project is in maintenance mode. See [Before resizing](#before-resizing) for 
 
 **Need a feature?** Feel free to open an issue with your use case!
 
+## Planned improvements
+
+- Make batch conversion safer by detecting output conflicts before writing and preserving Unity asset references when converting JPEGs.
+- Add transparent padding without resampling and cover padding, file conflicts, and asset references with Unity EditMode tests.
+- Build and validate the `.unitypackage` on pull requests, then verify that it imports into a clean Unity project before release.
+
+[Detailed implementation plan](Documentation~/FIX_PLAN.md)
+
 ## Contributing
 While this project is feature-complete, contributions are welcome:
 - **Bug reports**: [Open an issue](https://github.com/llarean/img2etc2/issues)
