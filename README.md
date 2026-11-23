@@ -2,26 +2,29 @@
 
 [![Releases](https://img.shields.io/github/v/release/llarean/img2etc2)](https://github.com/llarean/img2etc2/releases)
 [![License: APACHE](https://img.shields.io/badge/License-APACHE-yellow.svg)](https://github.com/LLarean/img2etc2/blob/main/LICENSE.md)
-![stability-stable](https://img.shields.io/badge/stability-stable-green.svg)
 [![CodeFactor](https://www.codefactor.io/repository/github/llarean/img2etc2/badge)](https://www.codefactor.io/repository/github/llarean/img2etc2)
 [![Support](https://img.shields.io/badge/support-maintenance_mode-orange)](https://github.com/llarean/img2etc2/graphs/commit-activity)
 [![Downloads](https://img.shields.io/github/downloads/llarean/img2etc2/total)](https://github.com/LLarean/img2etc2/archive/refs/heads/main.zip)
 [![Asset Store](https://img.shields.io/badge/Asset_Store-300+_downloads-blue)](https://assetstore.unity.com/preview/315139/1042556)
 
-Automatically resize Unity images for optimal ETC2/Crunch compression. Ensures all textures have dimensions divisible by 4, enabling efficient mobile texture compression with transparent padding.
-
-Perfect for mobile game developers who need maximum compression efficiency without manual image editing.
+Resize source textures to dimensions divisible by 4 for ETC2/Crunch workflows in Unity.
 
 **Technical details**: ETC2 is a block-based compression format that processes images in 4x4 pixel blocks. Learn more in Unity's [documentation](https://docs.unity3d.com/2023.2/Documentation/Manual/class-TextureImporterOverride.html) or this [technical post](https://unity.com/ru/blog/engine-platform/crunch-compression-of-etc-textures).
 
+## Before resizing
+
+Use a copy of your textures or create a restore point that includes the source images and their Unity `.meta` files. Check the selected folder and **Include subfolders** before running the batch.
+
+- The current resize operation resamples the entire image. This can change pixel art and sprite sheet alignment.
+- Resizing a JPG or JPEG writes a PNG and deletes the source file. This can overwrite an existing PNG with the same name and break Unity references to the original asset.
+- The Inspector may show the previous resolution until Unity reimports the file. Check your platform import settings to confirm the actual compression format.
+
 ## Quick Start
 1. Install via Package Manager: `https://github.com/llarean/img2etc2.git`
-2. Open `Tools > UnityIMG2ETC2`
+2. Open `Tools > IMG2ETC2`
 3. Select your textures folder
 4. Choose rounding mode (Up or Down)
 5. Click "Resize images"
-
-**Result**: All images resized to ETC2-compatible dimensions (multiples of 4)
 
 ## INSTALLATION
 
@@ -35,15 +38,9 @@ There are 4 ways to install this utility:
 - *(via Package Manager)* add the following line to *Packages/manifest.json*:
   - `"com.llarean.img2etc2": "https://github.com/llarean/img2etc2.git"`
 
-## Warning
-
-- The utility changes the size of images. Before applying it, make sure you make a backup copy or create a commit.
-- **All images are converted to PNG format** to ensure proper alpha channel support for transparent padding pixels.
-- Image resolution data may not be updated immediately in the image information in editor.
-
 ## HOW TO
 
-1. Open the utility (context menu: `Tools > UnityIMG2ETC2`)
+1. Open `Tools > IMG2ETC2`.
 2. Select a folder (2 ways):
    - Click on the "Select folder" button; or
    - Specify "Folder path:" in the input field
@@ -56,7 +53,8 @@ There are 4 ways to install this utility:
 ![Window](https://github.com/LLarean/img2etc2/blob/main/Preview.png?raw=true)
 
 ## Project Status
-This project is **feature-complete** and stable. It accomplishes its intended goals and is ready for production use.
+
+The project is in maintenance mode. See [Before resizing](#before-resizing) for known limitations.
 
 **Current maintenance approach:**
 - **Bug fixes**: Addressed as reported
