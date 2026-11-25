@@ -4,7 +4,7 @@
   "version": "1.6.0",
   "documentationUrl": "https://github.com/LLarean/img2etc2",
   "changelogUrl": "https://github.com/llarean/img2etc2/releases",
-  "licensesUrl": "https://github.com/llarean/img2etc2/blob/master/LICENSE.md",
+  "licensesUrl": "https://github.com/llarean/img2etc2/blob/main/LICENSE.md",
   "description": "Automatically resize Unity textures to ETC2/Crunch-compatible dimensions (multiples of 4). Features rounding mode selection (Up/Down), image list filtering to show only problematic textures, resolution preview with before/after diff, and subfolder support.",
   "keywords": [
     "img2etc2",
