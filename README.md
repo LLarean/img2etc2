@@ -69,6 +69,8 @@ The project is in maintenance mode. See [Before resizing](#before-resizing) for 
 - Add transparent padding without resampling and cover padding, file conflicts, and asset references with Unity EditMode tests.
 - Build and validate the `.unitypackage` on pull requests, then verify that it imports into a clean Unity project before release.
 
+[Detailed implementation plan](Documentation~/FIX_PLAN.md)
+
 ## Contributing
 While this project is feature-complete, contributions are welcome:
 - **Bug reports**: [Open an issue](https://github.com/llarean/img2etc2/issues)
