@@ -28,7 +28,7 @@ jobs:
       - name: Lint Markdown
         run: npx --yes markdownlint-cli2 "**/*.md"
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: IMG2ETC2-unitypackage
           path: IMG2ETC2-check.unitypackage
