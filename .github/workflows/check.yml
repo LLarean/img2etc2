@@ -1,0 +1,32 @@
+name: Check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: check-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  package:
+    name: Build and validate .unitypackage
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build
+        run: python3 build_unitypackage.py IMG2ETC2-check.unitypackage
+
+      - name: Validate
+        run: python3 check_unitypackage.py IMG2ETC2-check.unitypackage
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: IMG2ETC2-unitypackage
+          path: IMG2ETC2-check.unitypackage
+          retention-days: 14

@@ -14,8 +14,21 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # The tag must match the package version, e.g. tag v1.7.1 -> "version": "1.7.1".
+      - name: Check tag matches package version
+        run: |
+          VERSION=$(python3 -c "import json; print(json.load(open('package.json'))['version'])")
+          TAG="${GITHUB_REF_NAME#v}"
+          if [ "$TAG" != "$VERSION" ]; then
+            echo "::error::Tag $GITHUB_REF_NAME does not match package.json version $VERSION"
+            exit 1
+          fi
+
       - name: Build .unitypackage
         run: python3 build_unitypackage.py "IMG2ETC2_${{ github.ref_name }}.unitypackage"
+
+      - name: Validate .unitypackage
+        run: python3 check_unitypackage.py "IMG2ETC2_${{ github.ref_name }}.unitypackage"
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
