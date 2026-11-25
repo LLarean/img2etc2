@@ -1,0 +1,9 @@
+{
+  "default": true,
+
+  // Prose and badge lines are not wrapped.
+  "MD013": false,
+
+  // Working docs may reuse heading names under different sections.
+  "MD024": { "siblings_only": true }
+}

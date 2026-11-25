@@ -25,6 +25,9 @@ jobs:
       - name: Validate
         run: python3 check_unitypackage.py IMG2ETC2-check.unitypackage
 
+      - name: Lint Markdown
+        run: npx --yes markdownlint-cli2 "**/*.md"
+
       - uses: actions/upload-artifact@v4
         with:
           name: IMG2ETC2-unitypackage

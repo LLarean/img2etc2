@@ -1,0 +1,4 @@
+{
+  // CLI options for markdownlint-cli2 (rule config stays in .markdownlint.jsonc).
+  "ignores": ["**/LICENSE.md"]
+}

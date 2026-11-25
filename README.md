@@ -1,4 +1,4 @@
-# ![unity](https://img.shields.io/badge/Unity-100000?style=for-the-badge&logo=unity&logoColor=white) IMG2ETC2 
+# ![unity](https://img.shields.io/badge/Unity-100000?style=for-the-badge&logo=unity&logoColor=white) IMG2ETC2
 
 [![Releases](https://img.shields.io/github/v/release/llarean/img2etc2)](https://github.com/llarean/img2etc2/releases)
 [![License: APACHE](https://img.shields.io/badge/License-APACHE-yellow.svg)](https://github.com/LLarean/img2etc2/blob/main/LICENSE.md)
@@ -20,6 +20,7 @@ Use a copy of your textures or create a restore point that includes the source i
 - The Inspector may show the previous resolution until Unity reimports the file. Check your platform import settings to confirm the actual compression format.
 
 ## Quick Start
+
 1. Install via Package Manager: `https://github.com/llarean/img2etc2.git`
 2. Open `Tools > IMG2ETC2`
 3. Select your textures folder
@@ -57,6 +58,7 @@ There are 4 ways to install this utility:
 The project is in maintenance mode. See [Before resizing](#before-resizing) for known limitations.
 
 **Current maintenance approach:**
+
 - **Bug fixes**: Addressed as reported
 - **Minor improvements**: Implemented based on community feedback  
 - **New features**: Considered only if there's significant demand
@@ -72,18 +74,17 @@ The project is in maintenance mode. See [Before resizing](#before-resizing) for 
 [Detailed implementation plan](Documentation~/FIX_PLAN.md)
 
 ## Contributing
+
 While this project is feature-complete, contributions are welcome:
+
 - **Bug reports**: [Open an issue](https://github.com/llarean/img2etc2/issues)
 - **Feature requests**: Describe your use case in an issue
 - **Pull requests**: For bug fixes or minor improvements
+
 ## Special thanks
 
 [Nintoryan](https://github.com/Nintoryan) (For your inspiration and main idea)
 
 ---
 
-<div align="center">
-
-**Made with ❤️ for the Unity community**  
-
-⭐ If this project helped you, please consider giving it a star!
+If this project helped you, please consider giving it a star.
