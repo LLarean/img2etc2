@@ -9,6 +9,8 @@
 
 Resize source textures to dimensions divisible by 4 for ETC2/Crunch workflows in Unity.
 
+> **Maintenance update in progress (November 2026).** The converter is being reworked for safety and precision: destination-conflict protection when converting JPG/JPEG to PNG, preservation of asset GUIDs, importer settings and serialized references, and pixel-exact padding instead of resampling. Fixes land on `main` in small reviewed steps — check the [pull requests](https://github.com/LLarean/img2etc2/pulls) before updating. The latest stable release remains [v1.7.0](https://github.com/LLarean/img2etc2/releases/tag/v1.7.0).
+
 **Technical details**: ETC2 is a block-based compression format that processes images in 4x4 pixel blocks. Learn more in Unity's [documentation](https://docs.unity3d.com/2023.2/Documentation/Manual/class-TextureImporterOverride.html) or this [technical post](https://unity.com/ru/blog/engine-platform/crunch-compression-of-etc-textures).
 
 ## Before resizing
